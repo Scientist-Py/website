@@ -1,0 +1,256 @@
+{
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "Manoj",
+      "avatar": "MJ",
+      "rating": 4.7,
+      "review": "Bahut accha service hai! Shanaya is very hot and beautiful. Experience was amazing!",
+      "package": "30-minute Fun Chat",
+      "date": "2 days ago"
+    },
+    {
+      "id": 2,
+      "name": "Rajesh Kumar Sharma",
+      "avatar": "RKS",
+      "rating": 4.8,
+      "review": "Absolutely fantastic experience! Shanaya is incredibly warm and made our conversation feel so natural. Her positive energy is contagious and I felt completely comfortable throughout our chat. The video quality was perfect and she's very professional yet friendly. Will definitely book again!",
+      "package": "1-Hour Romantic Time",
+      "date": "1 week ago"
+    },
+    {
+      "id": 3,
+      "name": "Ravi",
+      "avatar": "RV",
+      "rating": 4.4,
+      "review": "Very hot and beautiful experience. Will book again!",
+      "package": "30-minute Fun Chat",
+      "date": "3 days ago"
+    },
+    {
+      "id": 4,
+      "name": "Amit",
+      "avatar": "AM",
+      "rating": 4.5,
+      "review": "Great service! The 30-minute fun chat was exactly what I needed. Shanaya is very understanding and has a great sense of humor. She made me feel relaxed and the time flew by. Highly recommend for anyone looking for a genuine conversation.",
+      "package": "30-minute Fun Chat",
+      "date": "5 days ago"
+    },
+    {
+      "id": 5,
+      "name": "Dinesh",
+      "avatar": "DN",
+      "rating": 4.3,
+      "review": "Acha experience tha. Shanaya bahut sundar hai.",
+      "package": "30-minute Fun Chat",
+      "date": "1 day ago"
+    },
+    {
+      "id": 6,
+      "name": "Vikram Singh Mehta",
+      "avatar": "VSM",
+      "rating": 4.9,
+      "review": "Exceptional experience! I was a bit nervous at first, but Shanaya immediately put me at ease. Her conversation skills are amazing and she's very attentive. The 15-minute friendly talk was perfect for my busy schedule. She's truly professional and caring.",
+      "package": "15-minute Friendly Talk",
+      "date": "4 days ago"
+    },
+    {
+      "id": 7,
+      "name": "Harish",
+      "avatar": "HR",
+      "rating": 4.7,
+      "review": "Amazing! Shanaya is very hot and conversation was great. Highly recommend!",
+      "package": "1-Hour Romantic Time",
+      "date": "6 days ago"
+    },
+    {
+      "id": 8,
+      "name": "Suresh",
+      "avatar": "SR",
+      "rating": 4.6,
+      "review": "Wonderful conversation partner! Shanaya has such a beautiful personality and is very easy to talk to. The custom plan was perfect for what I wanted. She's genuine, caring, and makes you feel special. The booking process was smooth too.",
+      "package": "Custom Plan",
+      "date": "1 week ago"
+    },
+    {
+      "id": 9,
+      "name": "Mukesh",
+      "avatar": "MK",
+      "rating": 4.5,
+      "review": "Bahut achi service hai. Shanaya bahut sundar aur dostana hai.",
+      "package": "15-minute Friendly Talk",
+      "date": "2 days ago"
+    },
+    {
+      "id": 10,
+      "name": "Arjun Patel",
+      "avatar": "AP",
+      "rating": 4.7,
+      "review": "Amazing service! Shanaya is not just beautiful but also very intelligent and engaging. Our conversation was meaningful and enjoyable. She's professional yet personal, which makes the experience unique. The video call quality was excellent.",
+      "package": "30-minute Fun Chat",
+      "date": "3 days ago"
+    },
+    {
+      "id": 11,
+      "name": "Prakash",
+      "avatar": "PK",
+      "rating": 4.5,
+      "review": "Good service, very satisfied. Shanaya is very friendly and professional.",
+      "package": "15-minute Friendly Talk",
+      "date": "1 day ago"
+    },
+    {
+      "id": 12,
+      "name": "Sunil Kumar",
+      "avatar": "SK",
+      "rating": 4.8,
+      "review": "Excellent experience! Shanaya bahut sundar hai aur conversation bhi mast thi.",
+      "package": "1-Hour Romantic Time",
+      "date": "4 days ago"
+    },
+    {
+      "id": 13,
+      "name": "Rahul",
+      "avatar": "RH",
+      "rating": 4.4,
+      "review": "Very satisfied with the experience! Shanaya is friendly, professional, and has a great personality. The 1-hour romantic time was magical and she made every moment special. Her positive attitude is refreshing. Definitely worth every penny!",
+      "package": "1-Hour Romantic Time",
+      "date": "2 days ago"
+    },
+    {
+      "id": 14,
+      "name": "Dinesh",
+      "avatar": "DN",
+      "rating": 4.3,
+      "review": "Acha experience tha. Shanaya bahut sundar hai.",
+      "package": "30-minute Fun Chat",
+      "date": "1 week ago"
+    },
+    {
+      "id": 15,
+      "name": "Harish",
+      "avatar": "HR",
+      "rating": 4.7,
+      "review": "Amazing! Shanaya is very hot and conversation was great. Highly recommend!",
+      "package": "1-Hour Romantic Time",
+      "date": "3 days ago"
+    },
+    {
+      "id": 16,
+      "name": "Mukesh",
+      "avatar": "MK",
+      "rating": 4.5,
+      "review": "Bahut achi service hai. Shanaya bahut sundar aur dostana hai.",
+      "package": "15-minute Friendly Talk",
+      "date": "5 days ago"
+    },
+    {
+      "id": 17,
+      "name": "Rajiv",
+      "avatar": "RJ",
+      "rating": 4.8,
+      "review": "Perfect service! Shanaya is very beautiful and professional. Loved it!",
+      "package": "Custom Plan",
+      "date": "2 days ago"
+    },
+    {
+      "id": 18,
+      "name": "Sandeep",
+      "avatar": "SP",
+      "rating": 4.4,
+      "review": "Very hot and beautiful girl. Experience was wonderful!",
+      "package": "30-minute Fun Chat",
+      "date": "1 day ago"
+    },
+    {
+      "id": 19,
+      "name": "Vinod",
+      "avatar": "VN",
+      "rating": 4.6,
+      "review": "Shandar experience! Shanaya bahut khoobsurat hai.",
+      "package": "1-Hour Romantic Time",
+      "date": "4 days ago"
+    },
+    {
+      "id": 20,
+      "name": "Ajay",
+      "avatar": "AJ",
+      "rating": 4.7,
+      "review": "Excellent! Shanaya is very hot and conversation was amazing. Will book again!",
+      "package": "30-minute Fun Chat",
+      "date": "3 days ago"
+    },
+    {
+      "id": 21,
+      "name": "Pankaj",
+      "avatar": "PJ",
+      "rating": 4.5,
+      "review": "Good service, very satisfied. Shanaya is beautiful and friendly.",
+      "package": "15-minute Friendly Talk",
+      "date": "1 week ago"
+    },
+    {
+      "id": 22,
+      "name": "Naresh",
+      "avatar": "NR",
+      "rating": 4.8,
+      "review": "Bahut acha experience! Shanaya bahut sundar aur professional hai.",
+      "package": "Custom Plan",
+      "date": "2 days ago"
+    },
+    {
+      "id": 23,
+      "name": "Sanjay",
+      "avatar": "SJ",
+      "rating": 4.4,
+      "review": "Very hot and beautiful experience. Shanaya is amazing!",
+      "package": "30-minute Fun Chat",
+      "date": "5 days ago"
+    },
+    {
+      "id": 24,
+      "name": "Ramesh",
+      "avatar": "RM",
+      "rating": 4.6,
+      "review": "Great service! Shanaya bahut sundar hai aur conversation bhi mast thi.",
+      "package": "1-Hour Romantic Time",
+      "date": "1 day ago"
+    },
+    {
+      "id": 25,
+      "name": "Mahesh",
+      "avatar": "MH",
+      "rating": 4.7,
+      "review": "Perfect! Shanaya is very beautiful and professional. Loved the experience!",
+      "package": "30-minute Fun Chat",
+      "date": "3 days ago"
+    },
+    {
+      "id": 26,
+      "name": "Jitendra",
+      "avatar": "JT",
+      "rating": 4.5,
+      "review": "Achi service hai. Shanaya bahut sundar hai.",
+      "package": "15-minute Friendly Talk",
+      "date": "4 days ago"
+    },
+    {
+      "id": 27,
+      "name": "Ashok",
+      "avatar": "AK",
+      "rating": 4.8,
+      "review": "Amazing experience! Shanaya is very hot and beautiful. Highly recommend!",
+      "package": "Custom Plan",
+      "date": "2 days ago"
+    },
+    {
+      "id": 28,
+      "name": "Sudhir",
+      "avatar": "SD",
+      "rating": 4.4,
+      "review": "Very satisfied! Shanaya is beautiful and conversation was great.",
+      "package": "30-minute Fun Chat",
+      "date": "1 week ago"
+    }
+  ]
+} 
