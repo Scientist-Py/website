@@ -11,7 +11,7 @@ export const Footer = () => {
             
             {/* Brand Section */}
             <div className="md:col-span-1">
-              <h3 className="text-2xl font-bold mb-4">Shanaya Katiyan</h3>
+              <h3 className="text-2xl font-bold mb-4">SHANAYA LIVE</h3>
               <div className="flex gap-4">
                 <Button 
                   variant="outline" 
@@ -90,16 +90,14 @@ export const Footer = () => {
 
           {/* Bottom Bar */}
           <div className="border-t border-background/20 pt-8 text-center">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-              <p className="text-background/60 text-sm">
-                © 2025 Shanaya Katiyan. All rights reserved.
-              </p>
-              
-              <div className="flex items-center gap-2 text-background/60 text-sm">
-                <span>Made with</span>
-                <Heart className="w-4 h-4 text-red-400 fill-current" />
-                <span>for meaningful connections</span>
-              </div>
+            <p className="text-background/60 text-sm">
+              © 2025 SHANAYA LIVE. All rights reserved.
+            </p>
+            
+            <div className="flex items-center gap-2 text-background/60 text-sm">
+              <span>Made with</span>
+              <Heart className="w-4 h-4 text-red-400 fill-current" />
+              <span>for meaningful connections</span>
             </div>
           </div>
         </div>

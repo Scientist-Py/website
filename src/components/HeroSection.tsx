@@ -43,7 +43,7 @@ export const HeroSection = () => {
                 <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
                   Hi, I'm{" "}
                   <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                    Shanaya Katiyan
+                    SHANAYA LIVE
                   </span>
                 </h1>
                 
@@ -66,14 +66,6 @@ export const HeroSection = () => {
                 >
                   <Video className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
                   Book Video Call With Me
-                </Button>
-                
-                <Button 
-                  variant="outline" 
-                  size="xl"
-                  onClick={() => document.getElementById('gallery')?.scrollIntoView({ behavior: 'smooth' })}
-                >
-                  See My Gallery
                 </Button>
               </div>
 
@@ -101,7 +93,7 @@ export const HeroSection = () => {
                 <div className="relative">
                   <img
                     src={shanayaHero}
-                    alt="Shanaya Katiyan - Professional Video Call Companion"
+                    alt="SHANAYA LIVE - Professional Video Call Companion"
                     className="w-80 h-96 object-cover rounded-3xl shadow-2xl animate-float"
                   />
                   

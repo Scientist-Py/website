@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { Calendar, Clock, CreditCard, User, Mail, MessageSquare, QrCode, ArrowLeft, Copy } from "lucide-react";
+import { Calendar, Clock, CreditCard, User, Mail, MessageSquare, QrCode, ArrowLeft, Copy, Timer } from "lucide-react";
 import { ContactSupportDialog } from "@/components/ContactSupportDialog";
 
 export const BookingSection = () => {
@@ -14,6 +14,7 @@ export const BookingSection = () => {
   const [showPayment, setShowPayment] = useState(false);
   const [showVerification, setShowVerification] = useState(false);
   const [isVerifying, setIsVerifying] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(180); // 3 minutes in seconds
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -68,6 +69,44 @@ export const BookingSection = () => {
     "8:00 PM - 9:00 PM"
   ];
 
+  // Timer effect
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    
+    if (showPayment && timeLeft > 0) {
+      interval = setInterval(() => {
+        setTimeLeft((prevTime) => {
+          if (prevTime <= 1) {
+            // Time expired - show verification form
+            setShowPayment(false);
+            setShowVerification(true);
+            return 0;
+          }
+          return prevTime - 1;
+        });
+      }, 1000);
+    }
+
+    return () => {
+      if (interval) {
+        clearInterval(interval);
+      }
+    };
+  }, [showPayment, timeLeft]);
+
+  // Reset timer when payment is shown
+  useEffect(() => {
+    if (showPayment) {
+      setTimeLeft(180);
+    }
+  }, [showPayment]);
+
+  const formatTime = (seconds: number) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -106,8 +145,8 @@ export const BookingSection = () => {
   const generateUPIQR = () => {
     const selectedPackage = packages.find(p => p.id === formData.package);
     const amount = selectedPackage?.price || 0;
-    const upiId = "9758781006@pthdfc";
-    const receiverName = "Shanaya Katiyan";
+    const upiId = "ayushiiichauha@ybl";
+    const receiverName = "SHANAYA LIVE";
     const transactionNote = `Video Call - ${selectedPackage?.name}`;
     
     const upiUrl = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(receiverName)}&am=${amount}&cu=INR&tn=${encodeURIComponent(transactionNote)}`;
@@ -118,7 +157,7 @@ export const BookingSection = () => {
 
   const copyUPIDetails = () => {
     const selectedPackage = packages.find(p => p.id === formData.package);
-    const details = `UPI ID: 9758781006@pthdfc\nAmount: ₹${selectedPackage?.price}\nFor: ${selectedPackage?.name}`;
+    const details = `UPI ID: ayushiiichauha@ybl\nAmount: ₹${selectedPackage?.price}\nFor: ${selectedPackage?.name}`;
     navigator.clipboard.writeText(details);
     toast({
       title: "UPI Details Copied!",
@@ -192,7 +231,7 @@ export const BookingSection = () => {
                   <div className="bg-accent/50 p-4 rounded-lg text-left space-y-2">
                     <div><strong>Package:</strong> {selectedPackage?.name}</div>
                     <div><strong>Amount:</strong> ₹{selectedPackage?.price}</div>
-                    <div><strong>UPI ID:</strong> 9758781006@pthdfc</div>
+                    <div><strong>UPI ID:</strong> ayushiiichauha@ybl</div>
                     <div><strong>Time Slot:</strong> {formData.timeSlot}</div>
                   </div>
                   
@@ -217,6 +256,7 @@ export const BookingSection = () => {
 
   if (showPayment) {
     const selectedPackage = packages.find(p => p.id === formData.package);
+    const isTimeExpiring = timeLeft <= 30; // Show warning when 30 seconds or less
     
     return (
       <section id="booking" className="py-20 bg-background">
@@ -232,6 +272,20 @@ export const BookingSection = () => {
                   <ArrowLeft className="w-4 h-4 mr-2" />
                   Back to Booking
                 </Button>
+                
+                {/* Timer Display */}
+                <div className={`flex items-center justify-center gap-2 mb-4 p-3 rounded-lg ${
+                  isTimeExpiring ? 'bg-red-50 border border-red-200' : 'bg-blue-50 border border-blue-200'
+                }`}>
+                  <Timer className={`w-5 h-5 ${isTimeExpiring ? 'text-red-600' : 'text-blue-600'}`} />
+                  <span className={`font-mono text-lg font-bold ${isTimeExpiring ? 'text-red-600' : 'text-blue-600'}`}>
+                    {formatTime(timeLeft)}
+                  </span>
+                  <span className={`text-sm ${isTimeExpiring ? 'text-red-600' : 'text-blue-600'}`}>
+                    {isTimeExpiring ? 'Time Expiring!' : 'Time Remaining'}
+                  </span>
+                </div>
+                
                 <CardTitle className="flex items-center justify-center gap-2 text-2xl">
                   <QrCode className="w-6 h-6 text-primary" />
                   Complete Your Payment
@@ -242,30 +296,55 @@ export const BookingSection = () => {
               </CardHeader>
               
               <CardContent className="text-center space-y-6">
-                <div className="bg-white p-6 rounded-xl shadow-inner mx-auto w-fit">
-                  <img 
-                    src={generateUPIQR()} 
-                    alt="UPI Payment QR Code"
-                    className="w-64 h-64 mx-auto"
-                  />
+                {/* Stylish QR Code Container */}
+                <div className="relative mx-auto w-fit">
+                  {/* Gradient background */}
+                  <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 via-secondary/20 to-primary/20 rounded-3xl blur-xl animate-pulse" />
+                  
+                  {/* QR Code container */}
+                  <div className="relative bg-white p-8 rounded-3xl shadow-2xl border-4 border-gradient-to-r from-primary to-secondary">
+                    <div className="bg-gradient-to-br from-primary/10 to-secondary/10 p-6 rounded-2xl">
+                      <img 
+                        src={generateUPIQR()} 
+                        alt="UPI Payment QR Code"
+                        className="w-64 h-64 mx-auto drop-shadow-lg"
+                      />
+                    </div>
+                    
+                    {/* Decorative elements */}
+                    <div className="absolute -top-2 -right-2 w-6 h-6 bg-primary rounded-full opacity-60 animate-bounce" />
+                    <div className="absolute -bottom-2 -left-2 w-4 h-4 bg-secondary rounded-full opacity-60 animate-bounce" style={{ animationDelay: '0.5s' }} />
+                  </div>
                 </div>
                 
-                  <div className="space-y-4">
+                <div className="space-y-4">
                   <div className="text-lg font-semibold">
-                    Pay ₹{selectedPackage?.price} to 9758781006@pthdfc
+                    Pay ₹{selectedPackage?.price} to ayushiiichauha@ybl
                   </div>
                   
-                  <div className="bg-accent/50 p-4 rounded-lg text-left space-y-2">
-                    <div><strong>UPI ID:</strong> 9758781006@pthdfc</div>
-                    <div><strong>Amount:</strong> ₹{selectedPackage?.price}</div>
-                    <div><strong>Service:</strong> {selectedPackage?.name}</div>
-                    <div><strong>Time Slot:</strong> {formData.timeSlot}</div>
+                  <div className="bg-gradient-to-r from-primary/10 to-secondary/10 p-6 rounded-xl border border-primary/20 space-y-3">
+                    <div className="flex justify-between items-center">
+                      <span className="font-medium text-muted-foreground">UPI ID:</span>
+                      <span className="font-mono font-bold text-primary">ayushiiichauha@ybl</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="font-medium text-muted-foreground">Amount:</span>
+                      <span className="font-bold text-lg text-green-600">₹{selectedPackage?.price}</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="font-medium text-muted-foreground">Service:</span>
+                      <span className="font-medium">{selectedPackage?.name}</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="font-medium text-muted-foreground">Time Slot:</span>
+                      <span className="font-medium">{formData.timeSlot}</span>
+                    </div>
                   </div>
                   
                   <Button 
                     variant="outline" 
                     onClick={copyUPIDetails}
-                    className="w-full"
+                    className="w-full border-2 hover:bg-primary/5"
                   >
                     <Copy className="w-4 h-4 mr-2" />
                     Copy Payment Details
@@ -279,6 +358,14 @@ export const BookingSection = () => {
                   >
                     I Have Completed Payment
                   </Button>
+                  
+                  {isTimeExpiring && (
+                    <div className="bg-red-50 border border-red-200 rounded-lg p-3">
+                      <p className="text-sm text-red-700 font-medium">
+                        ⚠️ Time is running out! Please complete your payment quickly or the session will expire.
+                      </p>
+                    </div>
+                  )}
                   
                   <p className="text-sm text-muted-foreground">
                     After payment, you'll receive a confirmation and video call link within 5 minutes.
@@ -332,7 +419,7 @@ export const BookingSection = () => {
                 <div className="bg-accent/50 p-4 rounded-lg text-left space-y-2">
                   <div><strong>Package:</strong> {selectedPackage?.name}</div>
                   <div><strong>Amount:</strong> ₹{selectedPackage?.price}</div>
-                  <div><strong>UPI ID:</strong> 9758781006@pthdfc</div>
+                  <div><strong>UPI ID:</strong> ayushiiichauha@ybl</div>
                   <div><strong>Time Slot:</strong> {formData.timeSlot}</div>
                 </div>
 
