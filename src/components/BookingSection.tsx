@@ -145,7 +145,7 @@ export const BookingSection = () => {
   const generateUPIQR = () => {
     const selectedPackage = packages.find(p => p.id === formData.package);
     const amount = selectedPackage?.price || 0;
-    const upiId = "ayushiiichauha@ybl";
+    const upiId = "bobbyrex555@okicici";
     const receiverName = "SASSY POONAM";
     const transactionNote = `Video Call - ${selectedPackage?.name}`;
     

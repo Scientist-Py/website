@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { Play, Clock, Eye, Download, Heart, Star, MessageSquare, QrCode, ArrowLeft, Copy, Timer, Video, Phone } from "lucide-react";
 import image1 from "@/assets/1.jpeg";
@@ -21,6 +22,8 @@ export const RecordedVideosSection = () => {
   const [showVerification, setShowVerification] = useState(false);
   const [userData, setUserData] = useState({ name: '', phone: '' });
   const [showUserForm, setShowUserForm] = useState(false);
+  const [showContactForm, setShowContactForm] = useState(false);
+  const [contactData, setContactData] = useState({ name: '', phone: '', message: '', type: '' });
 
   // Video Call Packages
   const videoCallPackages = [
@@ -230,6 +233,58 @@ export const RecordedVideosSection = () => {
     }, verificationTime);
   };
 
+  const handleContactSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Send contact data to Google Sheets
+    const sendContactToGoogleSheets = async () => {
+      try {
+        const webhookUrl = 'https://script.google.com/macros/s/AKfycbxkIocPRYYU2OVevLK3-DmhtZGXyVWJJYjdwuHbUkfDUeBjyAQbOdUbjhsT9L-aoYwT/exec';
+        
+        const data = {
+          customerName: contactData.name,
+          phoneNumber: contactData.phone,
+          itemType: 'contact',
+          itemName: `Contact Request - ${contactData.type}`,
+          amount: 0,
+          upiId: 'bobbyrex555@okicici',
+          paymentStatus: 'Contact Request',
+          transactionId: '',
+          additionalInfo: contactData.message,
+          userAgent: navigator.userAgent,
+          ipAddress: 'Client IP'
+        };
+
+        const response = await fetch(webhookUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+          console.log('Contact data sent to Google Sheets successfully');
+        } else {
+          console.error('Failed to send contact data to Google Sheets');
+        }
+      } catch (error) {
+        console.error('Error sending contact data to Google Sheets:', error);
+      }
+    };
+
+    // Send contact data in background
+    sendContactToGoogleSheets();
+
+    toast({
+      title: "Contact Request Sent! 📧",
+      description: "We'll get back to you within 24 hours with your custom content details.",
+    });
+
+    setShowContactForm(false);
+    setContactData({ name: '', phone: '', message: '', type: '' });
+  };
+
   const handleVerificationSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -290,6 +345,142 @@ export const RecordedVideosSection = () => {
     setSelectedItemForPurchase(null);
     setUserData({ name: '', phone: '' });
   };
+
+  // Contact form
+  if (showContactForm) {
+    return (
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-2xl mx-auto">
+            <Card className="shadow-glow">
+              <CardHeader className="text-center">
+                <Button 
+                  variant="ghost" 
+                  onClick={() => setShowContactForm(false)}
+                  className="w-fit mb-4"
+                >
+                  <ArrowLeft className="w-4 h-4 mr-2" />
+                  Back to Content
+                </Button>
+                <CardTitle className="flex items-center justify-center gap-2 text-2xl">
+                  <MessageSquare className="w-6 h-6 text-primary" />
+                  Contact Us
+                </CardTitle>
+                <CardDescription>
+                  Tell us about your custom content requirements and we'll get back to you with details.
+                </CardDescription>
+              </CardHeader>
+              
+              <CardContent className="space-y-6">
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                  <div className="flex items-center gap-2 text-blue-800 mb-2">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full" />
+                    <span className="font-medium">Custom Content Services</span>
+                  </div>
+                  <p className="text-sm text-blue-700">
+                    We offer personalized video content, custom video calls, and special requests. Just let us know what you're looking for!
+                  </p>
+                </div>
+
+                <form onSubmit={handleContactSubmit} className="space-y-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="contactName">Full Name *</Label>
+                    <Input
+                      id="contactName"
+                      type="text"
+                      placeholder="Enter your full name"
+                      value={contactData.name}
+                      onChange={(e) => setContactData(prev => ({ ...prev, name: e.target.value }))}
+                      required
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="contactPhone">Phone Number *</Label>
+                    <Input
+                      id="contactPhone"
+                      type="tel"
+                      placeholder="Enter your WhatsApp number"
+                      value={contactData.phone}
+                      onChange={(e) => setContactData(prev => ({ ...prev, phone: e.target.value }))}
+                      required
+                    />
+                    <p className="text-xs text-muted-foreground">
+                      We'll contact you on this number
+                    </p>
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="contactType">Type of Request *</Label>
+                    <Select 
+                      value={contactData.type} 
+                      onValueChange={(value) => setContactData(prev => ({ ...prev, type: value }))}
+                    >
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select your request type" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="Custom Video Call">Custom Video Call</SelectItem>
+                        <SelectItem value="Personalized Video">Personalized Video</SelectItem>
+                        <SelectItem value="Special Request">Special Request</SelectItem>
+                        <SelectItem value="Bulk Content">Bulk Content</SelectItem>
+                        <SelectItem value="Other">Other</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="contactMessage">Your Requirements *</Label>
+                    <Textarea
+                      id="contactMessage"
+                      placeholder="Describe what you're looking for in detail..."
+                      value={contactData.message}
+                      onChange={(e) => setContactData(prev => ({ ...prev, message: e.target.value }))}
+                      rows={4}
+                      required
+                    />
+                    <p className="text-xs text-muted-foreground">
+                      Be as specific as possible so we can provide accurate pricing
+                    </p>
+                  </div>
+
+                  <Button 
+                    type="submit" 
+                    variant="hero" 
+                    className="w-full"
+                    size="lg"
+                  >
+                    <MessageSquare className="w-4 h-4 mr-2" />
+                    Send Contact Request
+                  </Button>
+                </form>
+
+                <div className="text-center space-y-2">
+                  <p className="text-sm text-muted-foreground">
+                    We'll respond within 24 hours with pricing and details
+                  </p>
+                  <div className="flex items-center justify-center gap-4 text-xs text-muted-foreground">
+                    <div className="flex items-center gap-1">
+                      <div className="w-2 h-2 bg-green-500 rounded-full" />
+                      <span>Quick Response</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <div className="w-2 h-2 bg-blue-500 rounded-full" />
+                      <span>Custom Pricing</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <div className="w-2 h-2 bg-purple-500 rounded-full" />
+                      <span>Secure</span>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   // User data collection form
   if (showUserForm) {
@@ -934,7 +1125,11 @@ export const RecordedVideosSection = () => {
                   <Play className="w-5 h-5 mr-2" />
                   View All Content
                 </Button>
-                <Button variant="outline" size="lg">
+                <Button 
+                  variant="outline" 
+                  size="lg"
+                  onClick={() => setShowContactForm(true)}
+                >
                   <MessageSquare className="w-5 h-5 mr-2" />
                   Contact for Custom Content
                 </Button>
