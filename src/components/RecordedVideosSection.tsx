@@ -113,9 +113,9 @@ export const RecordedVideosSection = () => {
           itemName: selectedItemForPurchase?.type === 'video-call' 
             ? selectedItemForPurchase?.name 
             : selectedItemForPurchase?.title,
-          amount: selectedItemForPurchase?.price,
-          upiId: 'bobbyrex555@okicici',
-          paymentStatus: 'Pending',
+                      amount: selectedItemForPurchase?.price,
+            upiId: 'ayushiiichauha@ybl',
+            paymentStatus: 'Pending',
           userAgent: navigator.userAgent,
           ipAddress: 'Client IP' // You can get this from your server
         };
@@ -196,7 +196,7 @@ export const RecordedVideosSection = () => {
   const generateUPIQR = () => {
     if (!selectedItemForPurchase) return "";
     const amount = selectedItemForPurchase.price;
-    const upiId = "bobbyrex555@okicici";
+    const upiId = "ayushiiichauha@ybl";
     const receiverName = "SASSY POONAM";
     const transactionNote = selectedItemForPurchase.type === 'video-call' 
       ? `Video Call - ${selectedItemForPurchase.name}`
@@ -209,7 +209,7 @@ export const RecordedVideosSection = () => {
 
   const copyUPIDetails = () => {
     if (!selectedItemForPurchase) return;
-    const upiId = "bobbyrex555@okicici";
+    const upiId = "ayushiiichauha@ybl";
     const itemName = selectedItemForPurchase.type === 'video-call' 
       ? selectedItemForPurchase.name 
       : selectedItemForPurchase.title;
@@ -246,9 +246,9 @@ export const RecordedVideosSection = () => {
           phoneNumber: contactData.phone,
           itemType: 'contact',
           itemName: `Contact Request - ${contactData.type}`,
-          amount: 0,
-          upiId: 'bobbyrex555@okicici',
-          paymentStatus: 'Contact Request',
+                      amount: 0,
+            upiId: 'ayushiiichauha@ybl',
+            paymentStatus: 'Contact Request',
           transactionId: '',
           additionalInfo: contactData.message,
           userAgent: navigator.userAgent,
@@ -306,7 +306,7 @@ export const RecordedVideosSection = () => {
             ? selectedItemForPurchase?.name 
             : selectedItemForPurchase?.title,
           amount: selectedItemForPurchase?.price,
-          upiId: 'bobbyrex555@okicici',
+          upiId: 'ayushiiichauha@ybl',
           paymentStatus: 'Verification Submitted',
           transactionId: transactionId,
           additionalInfo: additionalInfo,
@@ -602,7 +602,7 @@ export const RecordedVideosSection = () => {
                     <div><strong>Phone:</strong> {userData.phone}</div>
                     <div><strong>Item:</strong> {selectedItemForPurchase?.type === 'video-call' ? selectedItemForPurchase?.name : selectedItemForPurchase?.title}</div>
                     <div><strong>Amount:</strong> ₹{selectedItemForPurchase?.price}</div>
-                    <div><strong>UPI ID:</strong> bobbyrex555@okicici</div>
+                    <div><strong>UPI ID:</strong> ayushiiichauha@ybl</div>
                   </div>
                   
                   <div className="flex items-center justify-center gap-2 text-muted-foreground">
@@ -684,13 +684,13 @@ export const RecordedVideosSection = () => {
                 
                 <div className="space-y-4">
                   <div className="text-lg font-semibold">
-                    Pay ₹{selectedItemForPurchase?.price} to bobbyrex555@okicici
+                    Pay ₹{selectedItemForPurchase?.price} to ayushiiichauha@ybl
                   </div>
                   
                   <div className="bg-gradient-to-r from-primary/10 to-secondary/10 p-6 rounded-xl border border-primary/20 space-y-3">
                     <div className="flex justify-between items-center">
                       <span className="font-medium text-muted-foreground">UPI ID:</span>
-                      <span className="font-mono font-bold text-primary">bobbyrex555@okicici</span>
+                      <span className="font-mono font-bold text-primary">ayushiiichauha@ybl</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="font-medium text-muted-foreground">Amount:</span>
@@ -810,7 +810,7 @@ export const RecordedVideosSection = () => {
                   <div><strong>Phone:</strong> {userData.phone}</div>
                   <div><strong>Item:</strong> {selectedItemForPurchase?.type === 'video-call' ? selectedItemForPurchase?.name : selectedItemForPurchase?.title}</div>
                   <div><strong>Amount:</strong> ₹{selectedItemForPurchase?.price}</div>
-                  <div><strong>UPI ID:</strong> bobbyrex555@okicici</div>
+                  <div><strong>UPI ID:</strong> ayushiiichauha@ybl</div>
                 </div>
 
                 <form onSubmit={handleVerificationSubmit} className="space-y-4">

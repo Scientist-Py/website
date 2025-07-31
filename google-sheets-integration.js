@@ -40,7 +40,7 @@ function doPost(e) {
       data.itemType || '', // 'video-call' or 'recorded-video'
       data.itemName || '',
       data.amount || '',
-      data.upiId || 'bobbyrex555@okicici',
+      data.upiId || 'ayushiiichauha@ybl',
       data.paymentStatus || 'Pending',
       data.transactionId || '',
       data.additionalInfo || '',

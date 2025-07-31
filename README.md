@@ -54,6 +54,7 @@ npm run preview
 - **State Management**: TanStack Query
 - **Form Handling**: React Hook Form + Zod
 - **Icons**: Lucide React
+- **Analytics**: Vercel Analytics & Speed Insights
 
 ## Project Structure
 
@@ -74,6 +75,33 @@ src/
 - `npm run build:dev` - Build for development
 - `npm run preview` - Preview production build
 - `npm run lint` - Run ESLint
+
+## Analytics
+
+This project includes Vercel Analytics and Speed Insights for tracking website performance and user behavior:
+
+### Vercel Analytics
+- **Page Views**: Automatically tracks page views and navigation
+- **Visitor Analytics**: Collects visitor data and demographics
+- **Real-time Data**: View analytics in real-time on Vercel dashboard
+
+### Speed Insights
+- **Performance Monitoring**: Tracks Core Web Vitals and page load times
+- **User Experience Metrics**: Monitors real user performance data
+- **Performance Alerts**: Get notified of performance issues
+
+### Setup
+The analytics components are automatically included in the main App component:
+- `<Analytics />` - Tracks page views and visitor data
+- `<SpeedInsights />` - Monitors performance metrics
+
+### Viewing Analytics
+1. Deploy your site to Vercel
+2. Visit your Vercel dashboard
+3. Navigate to the "Analytics" tab
+4. View real-time visitor and performance data
+
+**Note**: Analytics data may take 30-60 seconds to appear after deployment.
 
 ## Contributing
 
