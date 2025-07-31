@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Video, Star } from "lucide-react";
-import shanayaHero from "@/assets/🔥🪭.jpg"; // New hero image
+import mainImage from "@/assets/main.jpeg"; // Main hero image
 import backgroundWaves from "@/assets/background-waves.jpg";
 
 export const HeroSection = () => {
@@ -43,7 +43,7 @@ export const HeroSection = () => {
                 <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
                   Hi, I'm{" "}
                   <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                    SHANAYA LIVE
+                    SASSY POONAM
                   </span>
                 </h1>
                 
@@ -92,8 +92,8 @@ export const HeroSection = () => {
                 <div className="absolute -inset-4 gradient-primary rounded-3xl blur-2xl opacity-30 group-hover:opacity-50 transition-opacity" />
                 <div className="relative">
                   <img
-                    src={shanayaHero}
-                    alt="SHANAYA LIVE - Professional Video Call Companion"
+                    src={mainImage}
+                    alt="SASSY POONAM - Professional Video Call Companion"
                     className="w-80 h-96 object-cover rounded-3xl shadow-2xl animate-float"
                   />
                   

@@ -120,7 +120,7 @@ export const StatsSection = () => {
             </span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Join our growing community of satisfied customers who have experienced amazing conversations with Shanaya
+            Join our growing community of satisfied customers who have experienced amazing conversations with Sassy Poonam
           </p>
         </div>
 

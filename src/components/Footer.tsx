@@ -11,7 +11,7 @@ export const Footer = () => {
             
             {/* Brand Section */}
             <div className="md:col-span-1">
-              <h3 className="text-2xl font-bold mb-4">SHANAYA LIVE</h3>
+              <h3 className="text-2xl font-bold mb-4">SASSY POONAM</h3>
               <div className="flex gap-4">
                 <Button 
                   variant="outline" 
@@ -91,7 +91,7 @@ export const Footer = () => {
           {/* Bottom Bar */}
           <div className="border-t border-background/20 pt-8 text-center">
             <p className="text-background/60 text-sm">
-              © 2025 SHANAYA LIVE. All rights reserved.
+              © 2025 SASSY POONAM. All rights reserved.
             </p>
             
             <div className="flex items-center gap-2 text-background/60 text-sm">

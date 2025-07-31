@@ -27,10 +27,10 @@ export const BookingSection = () => {
   });
 
   const packages = [
-    { id: "friendly", name: "15-minute Nude Video Call - ₹329", price: 329 },
-    { id: "fun", name: "25-minute Nude Video Call - ₹499", price: 499 },
-    { id: "romantic", name: "35-minute Nude Video Call - ₹699", price: 699 },
-    { id: "custom", name: "1-hour Custom Experience - ₹999", price: 999 }
+    { id: "friendly", name: "15-minute Nude Video Call - ₹411", price: 411 },
+    { id: "fun", name: "25-minute Nude Video Call - ₹624", price: 624 },
+    { id: "romantic", name: "35-minute Nude Video Call - ₹874", price: 874 },
+    { id: "custom", name: "1-hour Custom Experience - ₹1249", price: 1249 }
   ];
 
   const dressOptions = [
@@ -146,7 +146,7 @@ export const BookingSection = () => {
     const selectedPackage = packages.find(p => p.id === formData.package);
     const amount = selectedPackage?.price || 0;
     const upiId = "ayushiiichauha@ybl";
-    const receiverName = "SHANAYA LIVE";
+    const receiverName = "SASSY POONAM";
     const transactionNote = `Video Call - ${selectedPackage?.name}`;
     
     const upiUrl = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(receiverName)}&am=${amount}&cu=INR&tn=${encodeURIComponent(transactionNote)}`;

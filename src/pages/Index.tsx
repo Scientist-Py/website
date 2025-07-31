@@ -3,6 +3,7 @@ import { BookingSection } from "@/components/BookingSection";
 import { TrustSection } from "@/components/TrustSection";
 import { StatsSection } from "@/components/StatsSection";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
+import { RecordedVideosSection } from "@/components/RecordedVideosSection";
 import { FloatingBookButton } from "@/components/FloatingBookButton";
 
 const Index = () => {
@@ -11,6 +12,7 @@ const Index = () => {
       <HeroSection />
       <StatsSection />
       <TestimonialsSection />
+      <RecordedVideosSection />
       <BookingSection />
       <TrustSection />
       <FloatingBookButton />

@@ -50,7 +50,7 @@ export const TestimonialsSection = () => {
             </span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Real reviews from real customers who have experienced amazing conversations with Shanaya
+            Real reviews from real customers who have experienced amazing conversations with Sassy Poonam
           </p>
         </div>
 
